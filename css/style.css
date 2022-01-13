@@ -2,7 +2,8 @@
 @import url('https://fonts.googleapis.com/css2?family=Abril+Fatface&display=swap');
 
 * {
-    font-family: 'Montserrat';
+    font-family: "Montserrat", sans-serif;
+    scroll-behavior: smooth;
 }
 
 body {
@@ -21,48 +22,107 @@ header.header img {
 section.top-page {
     background: url("../images/bg.jpg");
     background-size: cover;
-    height: 80vh;
-    padding: 25px;
+    min-height: 100vh;
+
 }
 
 /* page de bienvenue */
 .landing-page {
-    padding: 20px 50px;
+    line-height: 80px;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 0 100px;
+}
+
+/* menu dde navigation */
+nav.nav-links {
+    display: flex;
+    justify-content: space-between;
+    list-style: none;
+}
+
+.nav-links li {
+    margin: 40px;
+    overflow: hidden;
+}
+
+.active a{
+    color: black !important;
+}
+
+.nav-links li a {
+    color: white;
+    text-decoration: none;
+    position: relative;
+    font-weight: 500;
+    display: block;
+    transition: transform 0.4s;
+}
+
+.nav-links a::before{
+    content: attr(data-text);
+    position: absolute;
+    top: 100%;
+}
+
+.nav-links a:hover{
+    transform: translateY(-100%);
+}
+
+.burger-container{
+    cursor: pointer;
 }
 
 .big-title {
     color: white;
     font-size: 80px;
-    font-weight: bold;
+    font-weight: 100;
     font-family: "Abril FatFace", cursive;
+    width: 60%;
 
 }
 
-a.scroll-down {
+.scroll-down {
+    line-height: 20px;
     position: absolute; /* bloque en bas */
     text-decoration: none;
-    color: white;
-    bottom: 160px;
-}
-
-/* menu dde navigation */
-nav.nav1 {
     display: flex;
+    color: white;
+    bottom: 30px;
+    width: 60px;
     justify-content: space-between;
-    list-style: none;
-    margin-left: 30px;
-    width: 350px;
+    overflow: hidden;
+
 }
 
-nav.nav1 li {
+.scroll-text {
+    position: relative;
+    transition: transform 0.4s;
+}
+
+.scroll-text::before {
+    content: attr(data-text);
+    position: absolute;
+    top: 100%;
+}
+
+.scroll-text:hover {
+    transform: translateY(-100%);
+}
+
+.scroll-icon {
+    font-size: 20px;
     color: white;
 }
 
 /*serives */
 .services {
+    min-height: 300px;
     display: flex;
     justify-content: space-evenly;
-    margin: 50px;
+    align-items: center;
 }
 
 .service-item {
@@ -80,12 +140,15 @@ nav.nav1 li {
     font-weight: 600;
     width: 150px;
     text-align: center;
+    margin-top: 25px;
 }
 
 /* meilleurs ventes */
 
 .best-items {
-    margin: 50px;
+    margin: 90px;
+    padding: 0 ;
+
 }
 
 .plante-title {
@@ -108,7 +171,6 @@ nav.nav1 li {
 
 .best-plantes {
     display: flex;
-    background-color: yellow;
     min-height: 400px;
     flex-wrap: wrap; /* permet de rendre respensive */
 }
@@ -154,10 +216,11 @@ nav.nav1 li {
     font-size: 22px;
     font-weight: 800;
     line-height: 3px;
+
 }
 
 .plante-price {
-    color: chartreuse;
+    color: green;
     line-height: 3px;
     font-weight: 800;
     font-size: 15px;
@@ -166,7 +229,7 @@ nav.nav1 li {
 /*nos plaantes*/
 
 .all-plantes {
-    margin: 100px;
+    margin: 90px;
 }
 
 .plantes-grid {
@@ -211,4 +274,187 @@ nav.nav1 li {
     background-image: url("../images/nos_plantes/6.jpg");
     grid-column: 4;
     grid-row: 3/5;
+}
+
+/*footer */
+footer{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin: 20px 100px;
+    font-weight: 600;
+}
+
+footer a.cgv{
+    text-decoration: none;
+    color: black;
+
+}
+
+
+/* responsive*/
+@media (max-width: 1150px) {
+
+    .header {
+        justify-content: space-between;
+    }
+
+    .burger-container {
+        width: 35px;
+        height: 30px;
+        position: relative;
+    }
+
+    .burger {
+        display: block;
+        height: 3px;
+        width: 30px;
+        background: white;
+        position: absolute;
+        top: 50%;
+        transform: translate(-50%, -50%);
+        transition: background 0.4s;
+    }
+
+    .burger-container.active .burger {
+        background: transparent;
+    }
+
+    .burger::before {
+        content: "";
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        background: white;
+        bottom: 8px;
+        transition: transform 0.4s,
+        bottom 0.4s,
+        background 0.4s;
+    }
+
+    .burger-container.active .burger::before {
+        bottom: 0;
+        transform: rotate(-45deg);
+        background: black;
+    }
+
+    .burger::after {
+        content: "";
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        background: white;
+        top: 8px;
+        transition: transform 0.4s,
+        top 0.4s background 0.4s;
+    }
+
+    .burger-container.active .burger::after {
+        top: 0;
+        transform: rotate(45deg);
+        background: black;
+    }
+
+    .nav-links {
+        position: absolute;
+        width: 100%;
+        height: 20vh;
+        background: white;
+        left: 0;
+        top: -50vh;
+        transition: top 0.4s ease-in-out;
+        flex-direction: column;
+        justify-content: space-evenly;
+        align-items: flex-start;
+        padding: 0 50px;
+    }
+
+    .nav-links.active {
+        top: 0;
+    }
+
+    .nav-links li {
+        margin: 15px;
+    }
+
+    .nav-links a {
+        color: black;
+        font-size: 30px;
+    }
+
+    .delivery-container {
+        flex-direction: column;
+        justify-content: center;
+        padding: 50px;
+    }
+
+    .delivery-container div {
+        margin: 30px;
+    }
+
+    .grid-plants {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+
+    .grid {
+        flex: 1;
+        min-width: 350px;
+        height: 500px;
+    }
+}
+
+@media (max-width: 550px) {
+
+    .logo {
+        width: 100px;
+    }
+
+    .landing,
+    .header,
+    .best-sales-container,
+    .plants-container,
+    .footer {
+        padding: 0 7%;
+    }
+
+    .header {
+        height: 100px;
+    }
+
+    .big-title {
+        font-size: 50px;
+        line-height: 50px;
+    }
+
+    .nav-links a {
+        font-size: 20px;
+    }
+
+    .section-title {
+        font-size: 30px;
+        text-align: center;
+    }
+
+    .plant-box {
+        min-width: 300px;
+    }
+
+    .plant-name,
+    .plant-box::before {
+        font-size: 20px;
+    }
+
+    .plant-price {
+        font-size: 10px;
+    }
+
+}
+
+@media (max-width: 400px) {
+
+    .footer {
+        justify-content: center;
+    }
 }

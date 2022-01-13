@@ -1,32 +1,46 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+    <link rel="shortcut icon" type="image/x-icon" href="images/plante.png" />
     <title>Nature Emoi</title>
     <link rel="stylesheet" type="text/css" href="css/style.css">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.0-2/js/all.min.js"></script>
 </head>
-<body><section class="top-page">
+<body>
+<section class="top-page">
     <header class="header">
         <img src="images/logo.png" alt="Logo du site">
-        <nav class="nav1">
-            <li>Accueil</li>
-            <li>Nos meilleurs ventes</li>
-            <li>Mes plantes</li>
+        <nav class="nav-links">
+            <li><a href="#" data-text="Accueil">Accueil</a></li>
+            <li>
+                <a href="#best-plantes" data-text="Nos meilleurs ventes">
+                    Nos meilleurs ventes
+                </a>
+            </li>
+            <li>
+                <a href="#all-plantes" data-text="Mes plantes">
+                    Mes plantes
+                </a>
+            </li>
         </nav>
+        <div class="burger-container">
+            <div class="burger"></div>
+        </div>
     </header>
     <div class="landing-page">
         <h1 class="big-title">Nature Emoi, les meilleures plantes du marché</h1>
-        <a class="scroll-down" href="">Scroll
+        <a class="scroll-down" href="#services">
+            <span class="scroll-text" data-text="Scroll">Scroll</span>
             <i class="scroll-icon fas fa-angle-down"></i>
         </a>
     </div>
 </section>
-<section class="services">
+<section class="services" id="services">
     <div class="service-item">
         <i class="fas fa-store delivery-icon"></i>
         <p>Nos magasins à votre service</p>
     </div>
-    <div class="service-item">
+    <div class="service-item" id="service-item">
         <i class="fas fa-people-carry delivery-icon"></i>
         <p>Retrait en magasin sans contact</p>
     </div>
@@ -35,7 +49,7 @@
         <p>Livraison à domicile sans contacte</p>
     </div>
 </section>
-<section class="best-items">
+<section class="best-items" id="best-plantes">
     <h2 class="plante-title">Nos meilleurs ventes</h2>
     <div class="best-plantes">
         <a class="plante-box plante1 no-grid">
@@ -65,8 +79,7 @@
     </div>
 </section>
 
-
-<section class="all-plantes">
+<section class="all-plantes" id="all-plantes">
     <h2 class="plante-title">Nos plantes</h2>
     <div class="plantes-grid">
         <a class="plante-grid1 plante-box">
@@ -107,7 +120,20 @@
         </a>
     </div>
 </section>
+<footer>
+    <p class="copyright">&copy;2021 - Nature Emoi</p>
+    <a href="" class="cgv">Conditions générale de ventes</a>
+</footer>
 
+<script>
+    const burgerContainer = document.querySelector('.burger-container');
+    const navLinks = document.querySelector('.nav-links');
+
+    burgerContainer.addEventListener('click', () => {
+        burgerContainer.classList.toggle('active');
+        navLinks.classList.toggle('active');
+    })
+</script>
 </body>
 
 </html>
