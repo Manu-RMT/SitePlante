@@ -1,0 +1,8 @@
+HTML
+-FLEX :Notion de flex pour rendre responsive des elements
+- GRID :
+
+CSS
+- Dans une postion relative si on met un element aboslue à l'interieur on peut choisir ca position
+
+
